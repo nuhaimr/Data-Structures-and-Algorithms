@@ -34,6 +34,11 @@ class SortsTestHarness
         System.out.println("           s - selection sort");
         System.out.println("           q - quicksort");
         System.out.println("           m - mergesort");
+         System.out.println("           r - quicksortmedian3pivot");
+         System.out.println("           p - Random Quick Sort");
+         System.out.println("           n - shellSort");
+         System.out.println("           u - countingSort");
+         System.out.println("           h - RadixSortLSD");
         System.out.println("        y is one of");
         System.out.println("           a - 1..n ascending");
         System.out.println("           d - 1..n descending");
@@ -107,9 +112,15 @@ class SortsTestHarness
                         case 'b' : Sorts.bubbleSort(A); break;
                         case 's' : Sorts.selectionSort(A); break;
                         case 'q' : Sorts.quickSort(A); break;
-                        case 'j' : Arrays.sort(A); break;    // Java's QuickSort
+                        case 'j' : Arrays.sort(A); break; 
+                        case 'r' : Sorts.quickSortMedian3(A); break; 
+                          // Java's QuickSort
                         case 'm' : Sorts.mergeSort(A); break;
                         case 'i' : Sorts.insertionSort(A); break;
+                        case 'p' : Sorts.RandomQuickSort(A); break;
+                        case 'n' : Sorts.shellSort(A); break;
+                        case 'u' : Sorts.countingSort(A); break;
+                        case 'h' : Sorts.radixSortLSD(A); break;
                         //case 'h' : Sorts.heapSort(A); break;
                         default :
                             throw new IllegalArgumentException("Unsupported sort type " + sortType);

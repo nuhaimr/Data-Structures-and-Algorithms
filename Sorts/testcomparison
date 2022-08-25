@@ -1,0 +1,25 @@
+Nuha Imran 
+20696366
+
+Shell Sort
+ascending 649.3333333333334
+descending 1134.3333333333333
+random 2747.6666666666665
+nearly 1396.3333333333333
+
+
+
+Counting Sort 
+ascending 270.6666666666667
+descending 285.3333333333333
+random 325.3333333333333
+nearly 318.6666666666667
+
+
+RadixSortLSD
+ascending 723.3333333333334
+descending 869.0
+random 629.0
+nearly 1053.6666666666667
+
+Counting sort seems to be the fastest followed by shellSort and lastly radixSort for all of them ascending is the fatest random is slowest for shell sort and counting sort whereas  for radix nearly is slowest
