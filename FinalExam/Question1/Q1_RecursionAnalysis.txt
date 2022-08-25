@@ -1,0 +1,43 @@
+Values\Alg  | Iter. Fact | Rec. Fact | Iter. Fib | Rec. Fib 
+10          |317.666667  |432.6666667|292.0      |275.6666666666667   
+20          |258.333333  |321.3333333|299.0      |1789.6666666666667 
+30          |262.666667  |312.3333333|253.666666 |16006.0 
+40          |295.666667  |268.0      |263.0      |1723819.6666666667 
+50          |236.333334  |211.0      |303.6666667|2.14427928E8 
+100         |541.0       |352.6666   |277.0      |Takes too long
+## Iterative Factorial Discussion
+
+Input data + performance
+10,20,30,40,50-for these data the time complexity is fairly quick however with increasing data numbers(finding factorial of those numbers)
+the time complexity is decreasing in iterative for smaller values it takes a bit longer whereas for largers values the time keeps decreasing.
+100-for larger values iterative becomes a bit slow,as in the time complexity increases a bit for large values.
+
+Discussion
+The iterative approach basically runs the loop for n times and runs the same code using a for loop.In iteration the time complexity depends on the number of cycles being repeated in a loop.The loop terminates when the condition fails.Iterative is mostly faster than recursive.Recursive is better for really really larger datasets  and where time complexity is not an issue as it can be seen in the analysis doing side by side comparison.Code size is larger for iteration,shorter for recursive.Iterative is fairly better for codes where time complexity needs to be balanced.
+
+## Recursive Factorial Discussion
+
+Input data + performance
+10,20,30,40,50-the time complexity is great it get the results in more time for smaller data it takes less time for larger data it takes less time,howeever shows output fairly quickly doesnt take too long.
+100-for larger data values recursion is faster than iteration doesnt take too much time either.
+
+Discussion
+The recursive approach is fairly simple,it calls the function within itself to execute the code again and again however this process of recursion it terminated with a base simplfying things to avoid stack overflow.The recursive approach is not better than iterative for  small data values however it is better for large data values will output result much quicker than iterative.Recursion takes more memory as it has to maitain and update the stack.So if using recursion the decision should be made mindfully as iteration is generally faster however
+iteration would require more lines of code.
+
+## Iterative Fibonacci Discussion
+
+Input data + performance
+10,20,30,40,50,100-Unlike factorial the time in case of fibonacci increase as the values or number increases,the numbers keep increasing the time keep increasing 
+
+Discussion
+A side by side comparison of fibonacci iterative and recursive will help determinning that iterative is alot faster than recursive which is really slow and although this maybe not a comparison but factorial is generally quicker than fibonacci.The reason of why iterative is faster will still remain the same.
+
+## Recursive Fibonacci Discussion
+
+10,20,30-As the number gets higher the time increases too.
+40,50,100-At 40 the output showing time becomes alot slower compared to the others.At 50 it takes about 10 minutes to display the time which is extremely slow and at 100 it does not show even after 15minutes which clearly indicates the fact that recursive is very very slow for higher data values in case of fibanacci unlike factorial.
+
+Discussion
+Fibonacci numbers grow exponentially,computer may not be able to handle so many values simultaneously making it take more time than usual for higher values as it will go something like becoming really complicated and time consuming unlike factorial which is fairly simple and straight forward.As for fibonacci too it can be concluded that iterative approach is far more better is terms of time complxity for both larger and smaller values compared to the recursive approach which is slow for both smaller data values and very slow for larger data values
+
