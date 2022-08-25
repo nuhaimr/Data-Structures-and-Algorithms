@@ -1,0 +1,373 @@
+import java.util.*;
+/** 
+** Software Technology 152
+** Class to hold various static sort methods.
+*/
+//Previously submitted in Prac11 by me
+class Sorts
+{
+    // bubble sort
+    public static void bubbleSort(int[] A)
+    {
+      int n = A.length;
+        for (int i = 0; i < n-1; i++)
+            for (int j = 0; j < n-i-1; j++)
+                if (A[j] > A[j+1])
+                {
+                    // swap arr[j+1] and arr[j]
+                    int temp = A[j];
+                    A[j] = A[j+1];
+                    A[j+1] = temp;
+                }
+     
+    }//bubbleSort()
+   
+    public static void selectionSort(int[] A)
+    {
+     int n = A.length;
+
+        for (int i = 0; i < n-1; i++)
+        {
+            int min_idx = i;
+            for (int j = i+1; j < n; j++)
+                if (A[j] < A[min_idx])
+                    min_idx = j;
+
+            // Swap the found minimum element with the first element
+            int temp = A[min_idx];
+            A[min_idx] = A[i];
+            A[i] = temp;
+        }
+    }// selectionSort()
+
+    // insertion sort
+    public static void insertionSort(int[] A)
+    {
+    int n = A.length;
+        for (int i = 1; i < n; ++i) {
+            int key = A[i];
+            int j = i - 1;
+            while (j >= 0 && A[j] > key) {
+                A[j + 1] = A[j];
+                j = j - 1;
+            }
+            A[j + 1] = key;
+        }
+     
+    }// insertionSort()
+    public static void mergeSort(int[] A)
+    {
+     mergeSortRecurse( A, 0, A.length - 1 );
+    }//mergeSort()
+    private static void mergeSortRecurse(int[] A, int leftIdx, int rightIdx)
+    {
+    int midIdx;
+
+        if( leftIdx < rightIdx )
+        {
+            midIdx = ( leftIdx + rightIdx ) / 2;
+
+            mergeSortRecurse( A, leftIdx, midIdx );
+            mergeSortRecurse( A, midIdx + 1, rightIdx );
+            merge( A, leftIdx, midIdx, rightIdx );
+        }
+
+    }//mergeSortRecurse()
+    private static void merge(int[] A, int leftIdx, int midIdx, int rightIdx)
+    {
+     int[] tempArr = new int[ rightIdx - leftIdx + 1 ];
+        int i = leftIdx;
+        int j = midIdx + 1;
+        int k = 0;
+
+        while( ( i <= midIdx ) && ( j <= rightIdx ) )
+        {
+            if( A[i] <= A[j] )
+            {
+                tempArr[k] = A[i];
+                i++;
+            }
+            else
+            {
+                tempArr[k] = A[j];
+                j++;
+            }
+            k++;
+        }
+
+        for( int ii = i; i <= midIdx; i++ )
+        {
+            tempArr[k] = A[i];
+            k++;
+        }
+
+        for( int jj = j; j <= rightIdx; j++ )
+        {
+            tempArr[k] = A[j];
+            k++;
+        }
+
+        for( int kk = leftIdx; kk <= rightIdx; kk++ )
+        {
+            A[kk] = tempArr[ kk - leftIdx ];
+        }
+    }//merge()
+
+
+    public static void quickSort(int[] A)
+    {
+    quickSortRecurse( A, 0, A.length - 1 );
+    }//quickSort()
+    private static void quickSortRecurse(int[] A, int leftIdx, int rightIdx)
+    {
+    int pivIdx;
+        int newPivIdx;
+        if( rightIdx > leftIdx )
+        {
+            pivIdx = rightIdx;
+            newPivIdx = doPartitioning( A, leftIdx, rightIdx, pivIdx );
+
+            quickSortRecurse( A, leftIdx, newPivIdx - 1 );
+            quickSortRecurse( A, newPivIdx + 1, rightIdx );
+        }
+    }//quickSortRecurse()
+    private static int doPartitioning(int[] A, int leftIdx, int rightIdx, int pivotIdx)
+    {
+    {
+        int currIdx;
+        int pivVal;
+        int temp;
+        int newPivIdx;
+        
+        pivVal = A[pivotIdx];
+        A[pivotIdx] = A[rightIdx];
+        A[rightIdx] = pivVal;
+
+        currIdx = leftIdx;
+
+        for( int i = leftIdx; i <= rightIdx - 1; i++ )
+        {
+            if( A[i] < pivVal )
+            {
+                temp = A[i];
+                A[i] = A[currIdx];
+                A[currIdx] = temp;
+
+                currIdx++;
+            }
+        }
+
+        newPivIdx = currIdx;
+        A[rightIdx] =  A[newPivIdx];
+        A[newPivIdx] = pivVal;
+
+        return newPivIdx;
+		
+    }//doPartitioning
+
+
+}
+  public static void quickSortMedian3( int[] A )
+    {
+        quickSortMedian3Recurse( A, 0, A.length - 1 );
+    }
+ 
+    private static void quickSortMedian3Recurse( int[] A, int leftIdx, int rightIdx )
+    {
+        int pivIdx;
+        int newPivIdx;
+
+        if( rightIdx > leftIdx )
+        {
+            pivIdx = med3( A, leftIdx, rightIdx, ( leftIdx + rightIdx ) / 2 );
+                // Median of three pivot selection
+            newPivIdx = doPartitioning( A, leftIdx, rightIdx, pivIdx );
+
+            quickSortRecurse( A, leftIdx, newPivIdx - 1 );
+                // Recurse Left
+            quickSortRecurse( A, newPivIdx + 1, rightIdx );
+                // Recurse Right
+        }
+   
+    }
+     private static int med3( int[] A, int a, int b, int c )
+    { 
+        int med;
+
+        if( A[a] > A[b] && A[a] > A[c] )
+        {
+            med = a;
+        }
+        else if( A[b] > A[a] && A[b] > A[c] )
+        {
+            med = b;
+        }
+        else
+        {
+            med = c;
+        }
+
+        return med;
+    }
+    
+    
+    
+    public static void RandomQuickSort( int[] A )
+    {
+        randomQuickSort( A, 0, A.length - 1 );
+    }
+    
+    private static void random(int A[],int leftidx,int rightidx)
+    {
+     
+        Random rand= new Random();
+        int pivot = rand.nextInt(rightidx-leftidx)+leftidx;
+         
+        int temp1=A[pivot]; 
+        A[pivot]=A[rightidx];
+        A[rightidx]=temp1;
+    }
+    private static int partition(int A[], int leftidx, int rightidx)
+    {
+        random(A,leftidx,rightidx);
+        int pivot = A[rightidx];
+     
+ 
+        int i = (leftidx-1);
+        for (int j = leftidx; j < rightidx; j++)
+        {
+            if (A[j] < pivot)
+            {
+                i++;
+                int temp = A[i];
+                A[i] = A[j];
+                A[j] = temp;
+            }
+        }
+        int temp = A[i+1];
+        A[i+1] = A[rightidx];
+        A[rightidx] = temp;
+ 
+        return i+1;
+    }
+ 
+    private static void randomQuickSort(int A[], int leftidx, int rightidx)
+    {
+        if (leftidx < rightidx)
+        {
+            int pi = partition(A, leftidx, rightidx);
+            randomQuickSort(A, leftidx, pi-1);
+            randomQuickSort(A, pi+1, rightidx);
+        }
+    }
+ 
+    
+    
+
+
+ public static void shellSort( int[] A )
+    {
+        int n = A.length;
+        int temp;
+            // Current value of array
+        int k;
+     
+
+        // For each element gap, halving each iteration
+        for( int elementGap = n / 2; elementGap > 0; elementGap /= 2 )
+        {
+            for( int i = elementGap; i < n; i++ )
+            {
+                temp = A[i];
+                k = i;
+
+                for( int j = i; j >= elementGap && A[ j - elementGap ] > temp; j -= elementGap )
+                {
+                    A[j] = A[ j - elementGap ];
+                    k = j - elementGap;
+                }
+
+                A[k] = temp;
+            }
+        }
+    }
+    
+    public static void countingSort( int[] A )
+    {
+        int[] count = new int[ A.length + 1 ];
+        int[] result = new int[ A.length + 1 ];
+
+        for( int i = 0; i < A.length; i++ ){
+            count[ A[i] ]++;
+            }
+
+        for( int i = 1; i < count.length; i++ ){
+            count[i] += count[ i - 1 ];
+            }
+
+        for( int i = A.length - 1; i >= 0; i-- ){
+            result[ --count[ A[i] ] ] = A[i];
+            }
+
+        for( int i = 0; i < A.length; i++ )
+        {
+            A[i] = result[i];
+        }
+    }
+    
+     public static void radixSortLSD( int[] A )
+    {
+        int exponent, radix;
+        int minVal, maxVal;
+     
+        minVal = A[0];
+        maxVal = A[0];
+        for( int i = 1; i < A.length; i++ )
+        {
+            if( A[i] < minVal )
+                minVal = A[i];
+            else if( A[i] > maxVal )
+                maxVal = A[i];
+        }
+
+        radix = 10;
+        exponent = 1;
+            // Start at digit one because it's LSD
+        while( ( maxVal - minVal ) / exponent >= 1 )
+        {
+            radixCountingSort( A, radix, exponent, minVal );
+            exponent *= radix;
+        }
+    }
+
+    private static void radixCountingSort( int[] A, int radix, int exponent,int minVal )
+    {
+        int idx;
+        int[] buckets = new int[radix];
+        int[] result = new int[ A.length + 1 ];
+
+        for( int i = 0; i < A.length; i++ )
+        {
+            idx = (int)( ( ( A[i] - minVal ) / exponent ) % radix );
+            buckets[idx]++;
+        }
+
+        for( int i = 1; i < radix; i++ )
+            buckets[i] += buckets[ i - 1 ];
+
+        for( int i = A.length - 1; i >= 0; i-- )
+        {
+            idx = (int)( ( ( A[i] - minVal ) / exponent ) % radix );
+            result[ --buckets[idx] ] = A[i];
+        }
+
+        for( int i = 0; i < A.length; i++ )
+        {
+            A[i] = result[i];
+        }
+    }
+}
+    
+    
+
+

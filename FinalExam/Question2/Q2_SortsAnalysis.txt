@@ -1,0 +1,48 @@
+
+Selection Sort	
+				
+Data Size  | Best Case        | Worst Case         | Average Case
+           |(describe)        | (describe)         | (describe – e.g. ascending)    
+  100      |250-Ascending     |321.666-Descending  | 300.66-random   
+ 1000      |3347.0-Ascending  |4885.666-Descending | 4689.666-random   
+10000      |33021.33-Ascending|126289.66-Descending| 131283.66-random   
+
+Discussion :
+Selection sort usually has an O(n2) time complexity.The array is divided into two parts sorted and unsorted from left to right and sorts till there are no unsorted elements left.The analysis that comes up with running this is that ascending for this sort is best case meaning
+O(n2) comparisons O(1) swap second comes the average case which in my analysis seems the random one which has O(n2) comparsions and O(n) swaps.The worst case from my analysis is becoming the descedning which then must be O(1) auxiliary worst space time complexity with comaprsion O(n2) and O(n) swaps.
+
+
+ShellSort	
+				
+Data Size  | Best Case      | Worst Case       | Average Case
+           |(describe)      | (describe)       | (describe – e.g. ascending)    
+  100      |48.3-Ascending  |73.33-descending  |32.0-Random    
+ 1000      |240.3-Ascending |956.0-descending  |690.333-Random    
+10000      |917-Ascending   |3161.0-descending |2234.0-random    
+
+Discussion :
+Shell sort uses insertion sort algortihm.It avoids really large shifts.Worst space complexity is O(n).With my analysis the case the is best seems to be Ascending is probably running with the time complexity(O*nlogn).The average case with my analysis seems to be random which can then be declared as O(n*log(n)2) the final worst case with my analysis seems to be descending so it probably has the complexity of O(n2).Descending is worst case because the array is sorted in reverse.This sort is not stable.The space complexity is O(1).
+
+
+RightMost QuickSort
+
+Data Size  | Best Case      | Worst Case       | Average Case
+           |(describe)      | (describe)       | (describe – e.g. ascending)    
+  100      |133.3-Descending|607.0-random      |364.3-Ascending    
+ 1000      |149.0-Random    |4880-Descending   |855.66-ascending    
+10000      |1271-Random     |69317.0-Descending|14645-Ascending
+
+Discussion:
+This is mainly run on divide and conquer but for this case you set the right as a pivot which changes the whole case scenario.Best Case in my scenario seem to be Random meaning the best case complexity is O(n*logn).Average Case through my analysis seems to be ascending so it probably has a time complexity of O(n*logn).The Worst Case with my analysis seems to be descending through which we can assume the worst case complexity is O(n2).
+
+
+QuickSort MedianOfThree
+Data Size  | Best Case      | Worst Case     | Average Case
+           |(describe)      | (describe)     | (describe – e.g. ascending)    
+  100      |168.6-Random    |566.6-Ascending |382.3-Descending    
+ 1000      |147.0-Random    |2728-Ascending  |376.3-descending    
+10000      |1840-Random     |37672-Descending|23699.33-Ascending
+
+Discussion:
+The complexities wil remain same as the quicksort however the values here have changed since now we are not considering rightmost pviot rather the median of three through these the case complexity that would be same for best average and worst but here since there is no certain pattern it can be decided according to the qualities random is this case is mostly best the case complexity would be O(n*logn).On average case complexity would come Ascending O(n*logn) and the one with worst would probably be descending with case complexity O(n2).
+
